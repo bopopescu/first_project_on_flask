@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Жизнь по SCRUM
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Расскажу как живет наша команда по SCRUM</h1><br>
+    <a class="btn btn-warning" href="/update_scrum">Добавить</a> <br>
+    {% if scrum|length > 0 %}
+        {% for el in scrum[:1] %} <!-- цикл для 1 значения-->
+        <div class="alert alert-info">
+            <h5>{{ el.scrum }}</h5>
+             <!--<p><b>Дата: {{ el.date.date() }}</b></p>-->
+            <a class="btn btn-warning" href="/update_scrum/{{ el.id }}/update">Редактировать</a> <br>
+        </div>
+        {% endfor %}
+
+    {% else %} <!-- иначе пишем, что нет ничего -->
+    <p>Видео еще нет.</p>
+    {% endif %}
+</div>
+
+{% endblock %}

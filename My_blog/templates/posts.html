@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Все статьи
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Статьи</h1>
+
+    {% if articles|length > 0 %} <!-- если длина статьи больше 0, то есть существуют статьи, то делаем цикл с выводом.-->
+
+        {% for el in articles %} <!-- цикл для перебора значения в артиклс функции posts(), endfor завершает цикл -->
+        <div class="alert alert-info">
+            <img src="/static/image/post_image/{{el.image}}" Width="400" Height="300"
+            frameborder="0">
+            <h2>{{ el.title }} </h2>
+            <p>{{ el.intro }}</p>
+            <p><b>Дата: {{ el.date.date() }}</b></p>
+            <a href="/posts/{{ el.id }}" class="btn btn-warning">Подробней</a>
+        </div>
+        {% endfor %}
+    {% else %} <!-- иначе пишем, что нет ничего -->
+    <p>Статей еще нет.</p>
+    {% endif %}
+</div>
+
+{% endblock %}

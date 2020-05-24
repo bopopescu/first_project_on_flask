@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Создание статьи
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Добавление статьи</h1>
+    <form action="/update_scrum" method="post">
+        <textarea name="scrum" id="scrum" class="form-control" placeholder="Пишем статью"></textarea><br>
+        <input type="submit" class="btn btn-success" value="Добавить">
+    </form> <!-- где будет обрабатываться статья -->
+</div>
+
+{% endblock %}

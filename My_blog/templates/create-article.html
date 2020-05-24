@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Создание статьи
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Добавление статьи</h1>
+    <form action="/create-article" method="post" enctype="multipart/form-data">
+        <input type="text" name="title" id="title" class="form-control" placeholder="Введить заголовок статьи"><br>
+        <input type="text" name="marker" id="marker" class="form-control" placeholder="Введите тип статьи"><br>
+        <textarea name="intro" id="intro" class="form-control" placeholder="Введите анонс статьи"></textarea><br>
+        <textarea name="text" id="text" class="form-control" placeholder="Введите текст статьи" rows="9"></textarea><br>
+        <input type="file" name="file" class="file" accept="image/*">
+        <input type="text" name="image" id="image" class="form-control" placeholder="Введить ссылку на картинку"><br>
+        <input type="submit" class="btn btn-success" value="Отправить">
+    </form> <!-- где будет обрабатываться статья -->
+</div>
+
+{% endblock %}

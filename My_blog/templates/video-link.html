@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Видео источники
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Полезные видео</h1>
+    <a class="btn btn-warning" href="/add-video">Добавить Видео</a>
+    <a class="btn btn-warning" href="/literature">Книги</a><br>
+    <br>
+    {% if video|length > 0 %} <!-- если длина статьи больше 0, то есть существуют статьи, то делаем цикл с выводом.-->
+
+        {% for el in video %} <!-- цикл для перебора значения в артиклс функции posts(), endfor завершает цикл -->
+        <div class="alert alert-info">
+            <h5>{{ el.id }} {{ el.name }}</h5>
+            <iframe width="560" height="315" src="{{ el.link }}" frameborder="0"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <br>
+            <a href="/video-link/{{ el.id }}/delete" class="btn btn-danger">Удалить видео</a>
+            <a href="/video-link/{{ el.id }}/update" class="btn btn-success">Редактировать видео</a>
+             <!--<p><b>Дата: {{ el.date.date() }}</b></p>-->
+        </div>
+        {% endfor %}
+    {% else %} <!-- иначе пишем, что нет ничего -->
+    <p>Видео еще нет.</p>
+    {% endif %}
+
+</div>
+
+{% endblock %}

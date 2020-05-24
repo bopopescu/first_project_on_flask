@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Редактирование статьи
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Редактирование статьи</h1>
+    <form method="post" enctype="multipart/form-data"> <!-- action не пишем, чтобы обработка формы была прям на этой страницк, не как в create_article -->
+        <!-- {{article.intro}} где то через value, где то без, скорей всего у input нет закрывающего тега -->
+        <input type="text" name="title" id="title" class="form-control" value="{{article.title}}" placeholder="Введить заголовок статьи"><br>
+        <input type="text" name="marker" id="marker" class="form-control" value="{{article.marker}}" placeholder="Введите тип статьи"><br>
+        <textarea name="intro" id="intro" class="form-control" placeholder="Введите анонс статьи">{{article.intro}}</textarea><br>
+        <textarea name="text" id="text" class="form-control" placeholder="Введите текст статьи">{{article.text}}</textarea><br>
+        <input type="file" name="file" class="file" accept="image/*">
+       <!-- <input type="text" name="image" id="image" class="form-control" value="{{article.image}}" placeholder="Введить ссылку на картинку"><br>-->
+        <input type="submit" class="btn btn-success" value="Редактировать">
+    </form> <!-- где будет обрабатываться статья -->
+</div>
+
+{% endblock %}

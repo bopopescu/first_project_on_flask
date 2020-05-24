@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Литература
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Не только книжки, но и полезные источники.</h1>
+    <a class="btn btn-warning" href="/add-literature">Добавить книгу</a>
+    <a class="btn btn-warning" href="/video-link">Видео</a> <br>
+    <br>
+        {% if literature|length > 0 %} <!-- если длина статьи больше 0, то есть существуют статьи, то делаем цикл с выводом.-->
+
+        {% for el in literature %} <!-- цикл для перебора значения в артиклс функции posts(), endfor завершает цикл -->
+        <div class="alert alert-info">
+            <h5>{{ el.id }} {{ el.name }}</h5>
+            <p>{{ el.author }}</p>
+            <a href="/literature/{{ el.id }}/delete" class="btn btn-danger">Удалить книгу</a>
+            <a href="/literature/{{ el.id }}/update" class="btn btn-success">Редактировать книгу</a>
+             <!--<p><b>Дата: {{ el.date.date() }}</b></p>-->
+        </div>
+        {% endfor %}
+    {% else %} <!-- иначе пишем, что нет ничего -->
+    <p>Книг еще нет.</p>
+    {% endif %}
+</div>
+
+{% endblock %}
